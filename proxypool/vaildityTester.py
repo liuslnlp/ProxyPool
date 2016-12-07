@@ -1,20 +1,31 @@
 import asyncio
 import aiohttp
 
-class VaildityTester(object):
-    def __init__(self, raw_proxies=None):
-        if raw_proxies == None:
-            self.raw_proxies = []
-        else:
-            self.raw_proxies = raw_proxies
-        self.usable_proxies = []
-    
-    def set_raw_proxies(self, proxies):
-        self.raw_proxies.extend(proxies)
 
-    
+class VaildityTester(object):
+    test_api = 'https://www.baidu.com'
+
+    def __init__(self):
+        self._raw_proxies = None
+        self._usable_proxies = []
+        self._loop = asyncio.get_event_loop()
+
+    def set_raw_proxies(self, proxies):
+        self._raw_proxies = proxies
+        self._usable_proxies = []
+
+    async def test_single_proxy(self, proxy):
+        async with aiohttp.ClientSession() as session:
+            try:
+                real_proxy = 'http://' + proxy
+                async with session.get(test_api, proxy=real_proxy, timeout=15) as resp:
+                    self._usable_proxies.append(proxy)
+            except asyncio.TimeoutError:
+                pass
+
     def test(self):
-        pass
-    
+        tasks = [self.test_single_proxy(proxy) for proxy in self._raw_proxies]
+        self._loop.run_until_complete(asyncio.wait(tasks))
+
     def get_usable_proxies(self):
-        return self.usable_proxies
+        return self._usable_proxies

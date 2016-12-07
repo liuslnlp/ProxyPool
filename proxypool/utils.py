@@ -14,8 +14,6 @@ def get_page(url):
     return soup
 
 
-
-
 class Downloader(object):
 
     def __init__(self, urls):

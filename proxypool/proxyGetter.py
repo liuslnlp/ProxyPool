@@ -6,7 +6,7 @@ class CrawlFreeProxy(object):
     def __init__(self):
         pass
     
-    def get_raw_proxies(self, engine='1', count=50):
+    def get_raw_proxies(self, engine='1', count=40):
         pass
 
     def crawl_kuaidaili(self, page_count=8):

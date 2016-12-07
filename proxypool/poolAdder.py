@@ -1,6 +1,7 @@
 from db import RedisClient
 from vaildityTester import VaildityTester
 from proxyGetter import CrawlFreeProxy
+from error import ResourceDepletionError
 
 
 class PoolAdder(object):
@@ -16,13 +17,15 @@ class PoolAdder(object):
             return True
         else:
             return False
-    
-    def add(self):
-        # 增加一些抓取逻辑，防止对同一页面的持续抓取
-        raw_proxies = self._conn.get()
-        self._tester.set_raw_proxies(raw_proxies)
-        self._tester.test()
-        self._conn.put_many(self._tester.get_usable_proxies())
-        if self.is_over_threshold():
-            return 
-        self.add()
+
+    def add_to_queue(self):
+        flag = 40
+        while not self.is_over_threshold:
+            raw_proxies = self._crawler.get_raw_proxies(flag)
+            self._tester.set_raw_proxies(raw_proxies)
+            self._tester.test()
+            self._conn.put_many(self._tester.get_usable_proxies())
+            flag += 40
+
+            if flag >= 400:
+                raise ResourceDepletionError
