@@ -3,7 +3,13 @@ import aiohttp
 
 
 class VaildityTester(object):
+    
+
     test_api = 'https://www.baidu.com'
+
+    """
+    检验器，负责对未知的代理进行异步检测。
+    """
 
     def __init__(self):
         self._raw_proxies = None
@@ -18,7 +24,7 @@ class VaildityTester(object):
         async with aiohttp.ClientSession() as session:
             try:
                 real_proxy = 'http://' + proxy
-                async with session.get(test_api, proxy=real_proxy, timeout=15) as resp:
+                async with session.get(self.test_api, proxy=real_proxy, timeout=15) as resp:
                     self._usable_proxies.append(proxy)
             except asyncio.TimeoutError:
                 pass
