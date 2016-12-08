@@ -67,14 +67,14 @@ class CrawlFreeProxy(object, metaclass=ProxyMetaclass):
             port = item[1].get_text().replace('\r\n', '').replace(' ', '')
             yield ':'.join([ip, port])
     
-    def crawl_goubanjia(self):
-        start_url = 'http://www.goubanjia.com/free/gngn/index.shtml'
-        soup = get_page(start_url)
-        proxy_list = soup.find('table', {"class": "table"}).find('tbody')
-        for tr in proxy_list.find_all('tr'):
-            _proxy = tr.find('td').find_all('span')
-            proxy = [i.get_text() for i in _proxy]
-            yield ''.join(proxy)
+    # def crawl_goubanjia(self):
+    #     start_url = 'http://www.goubanjia.com/free/gngn/index.shtml'
+    #     soup = get_page(start_url)
+    #     proxy_list = soup.find('table', {"class": "table"}).find('tbody')
+    #     for tr in proxy_list.find_all('tr'):
+    #         _proxy = tr.find('td').find_all('span')
+    #         proxy = [i.get_text() for i in _proxy]
+    #         yield ''.join(proxy)
 
 
 if __name__ == '__main__':
