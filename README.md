@@ -1,2 +1,2 @@
 # ProxyPool
-跨平台代理池，Python实现。
+跨语言代理池，Python实现。

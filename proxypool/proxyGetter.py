@@ -1,8 +1,19 @@
-from utils import get_page, Downloader
-from bs4 import BeautifulSoup
-import time
+"""
+-------------------------------------------------
+    File Name:     proxyGetter.py
+    Description:   代理抓取模块，负责与网络的交互。
+    Author:        Liu
+    Date:          2016/12/9
+-------------------------------------------------
+"""
+from .utils import get_page
 
 class ProxyMetaclass(type):
+    """
+    爬虫的元类，在FreeProxyGetter类中加入
+    __CrawlFunc__和__CrawlFuncCount__
+    两个参数，分别表示爬虫函数，和爬虫函数的数量。
+    """
     def __new__(cls, name, bases, attrs):
         count = 0
         attrs['__CrawlFunc__'] = []
@@ -15,9 +26,12 @@ class ProxyMetaclass(type):
 
 
 class FreeProxyGetter(object, metaclass=ProxyMetaclass):
-
-    def __init__(self):
-        pass
+    """
+    代理爬虫，负责扫描各大代理网站，抓取代理。
+    该类有可扩展性，可根据需要自己添加新站点的代理抓取函数，
+    但是函数名必须以crawl_开头，返回值必须以"host:port"的形式返回，
+    添加器会自动识别并调用此类函数。
+    """
     
     def get_raw_proxies(self, callback, count=40):
         proxies = []
@@ -28,6 +42,9 @@ class FreeProxyGetter(object, metaclass=ProxyMetaclass):
         return proxies
 
     def crawl_kuaidaili(self, page_count=8):
+        """
+        抓取快代理网的数据
+        """
         start_url = 'http://www.kuaidaili.com/proxylist/{}/'
         urls = [start_url.format(page) for page in range(1, page_count + 1)]
         for url in urls:
@@ -41,6 +58,9 @@ class FreeProxyGetter(object, metaclass=ProxyMetaclass):
 
 
     def crawl_daili66(self, page_count=4):
+        """
+        抓取代理66网的数据。
+        """
         start_url = 'http://www.66ip.cn/{}.html'
         urls = [start_url.format(page) for page in range(1, page_count + 1)]
         for url in urls:
@@ -53,12 +73,18 @@ class FreeProxyGetter(object, metaclass=ProxyMetaclass):
                 yield ':'.join([ip, port])
 
     def crawl_xici(self):
+        """
+        抓取xici代理网的数据。
+        """
         start_url = 'http://api.xicidaili.com/free2016.txt'
         soup = get_page(start_url)
         proxy_list = soup.find('p') 
         return proxy_list.get_text().split('\r\n')
     
     def crawl_proxy360(self):
+        """
+        抓取proxy360网的数据。
+        """
         start_url = 'http://www.proxy360.cn/default.aspx'
         soup = get_page(start_url)
         for proxy in soup.find_all('div', {"class": "proxylistitem"}):
