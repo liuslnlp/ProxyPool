@@ -1,6 +1,6 @@
 from db import RedisClient
 from vaildityTester import VaildityTester
-from proxyGetter import CrawlFreeProxy
+from proxyGetter import FreeProxyGetter
 from error import ResourceDepletionError
 
 
@@ -13,7 +13,7 @@ class PoolAdder(object):
         self._threshold = threshold
         self._conn = RedisClient()
         self._tester = VaildityTester()
-        self._crawler = CrawlFreeProxy()
+        self._crawler = FreeProxyGetter()
 
     def is_over_threshold(self):
         """
@@ -40,7 +40,7 @@ class PoolAdder(object):
                 self._conn.put_many(self._tester.get_usable_proxies())
                 if self.is_over_threshold():
                     break
-            
+
             flag += flag
             if flag >= 10 * flag:
                 raise ResourceDepletionError

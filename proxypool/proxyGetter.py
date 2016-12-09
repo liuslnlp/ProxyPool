@@ -14,7 +14,7 @@ class ProxyMetaclass(type):
         return type.__new__(cls, name, bases, attrs)
 
 
-class CrawlFreeProxy(object, metaclass=ProxyMetaclass):
+class FreeProxyGetter(object, metaclass=ProxyMetaclass):
 
     def __init__(self):
         pass
@@ -79,7 +79,7 @@ class CrawlFreeProxy(object, metaclass=ProxyMetaclass):
 
 if __name__ == '__main__':
     import time
-    a = CrawlFreeProxy()
+    a = FreeProxyGetter()
     start = time.clock()
     print(list(a.crawl_goubanjia()))
 
