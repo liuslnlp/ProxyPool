@@ -147,6 +147,3 @@ class Schedule(object):
         check_process.start()
 
 
-if __name__ == '__main__':
-    schedule = Schedule()
-    schedule.run()

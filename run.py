@@ -6,13 +6,13 @@
     Date:          2016/12/9
 -------------------------------------------------
 """
-from .api import app
-from .schedule import Schedule
+from proxypool.api import app
+from proxypool.schedule import Schedule
 
 
 def main():
-    s = Schedule()
-    s.run()
+    # s = Schedule()
+    # s.run()
     app.run()
 
 if __name__ == '__main__':
