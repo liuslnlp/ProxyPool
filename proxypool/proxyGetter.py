@@ -6,6 +6,9 @@
     Date:          2016/12/9
 -------------------------------------------------
 """
+
+import time
+
 from .utils import get_page
 
 class ProxyMetaclass(type):

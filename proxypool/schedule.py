@@ -16,6 +16,7 @@ import aiohttp
 from .db import RedisClient
 from .error import ResourceDepletionError
 from .proxyGetter import FreeProxyGetter
+from .setting import *
 
 
 class VaildityTester(object):
@@ -105,7 +106,7 @@ class Schedule(object):
     """
 
     @staticmethod
-    def vaild_proxy(cycle=600):
+    def vaild_proxy(cycle=VAILD_CHECK_CYCLE):
         """
         对已经如池的代理进行检测，防止池中的代理因长期
         不使用而过期。
@@ -125,7 +126,9 @@ class Schedule(object):
             conn.put_many(proxies)
 
     @staticmethod
-    def check_pool(lower_threshold=10, upper_threshold=30, cycle=20):
+    def check_pool(lower_threshold=POOL_LOWER_THRESHOLD,
+                   upper_threshold=POOL_UPPER_THRESHOLD,
+                   cycle=POOL_LEN_CHECK_CYCLE):
         """
         协调添加器，当代理池中可用代理的数量低于下阈值时，触发添加器，启动爬虫
         补充代理，当代理达到上阈值时，添加器停止工作。
@@ -145,5 +148,3 @@ class Schedule(object):
         check_process = Process(target=Schedule.check_pool)
         vaild_process.start()
         check_process.start()
-
-

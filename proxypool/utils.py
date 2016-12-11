@@ -23,15 +23,17 @@ def get_page(url):
 
 
 class Downloader(object):
-
+    """
+    一个异步下载器，可以对代理源异步抓取，但是容易被BAN。
+    """
     def __init__(self, urls):
         self.urls = urls
-        self.__htmls = []
+        self._htmls = []
 
     async def download_single_page(self, url):
         async with aiohttp.ClientSession() as session:
             async with session.get(url) as resp:
-                self.__htmls.append(await resp.text())
+                self._htmls.append(await resp.text())
 
     def download(self):
         loop = asyncio.get_event_loop()
@@ -41,4 +43,4 @@ class Downloader(object):
     @property
     def htmls(self):
         self.download()
-        return self.__htmls
+        return self._htmls

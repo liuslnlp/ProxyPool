@@ -10,9 +10,7 @@
 import redis
 
 from .error import PoolEmptyError
-
-HOST = 'localhost'
-PORT = 6379
+from .setting import HOST, PORT
 
 
 class RedisClient(object):
@@ -63,5 +61,3 @@ class RedisClient(object):
         """刷新Redis中的全部内容，测试用。
         """
         self.__db.flushall()
-
-

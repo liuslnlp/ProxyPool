@@ -6,8 +6,15 @@
     Date:          2016/12/9
 -------------------------------------------------
 """
+
+# Redis Host
 HOST = 'localhost'
+# Redis PORT
 PORT = 6379
 
-PROXY_LOWER_THRESHOLD = 10
-PROXY_UPPER_THRESHOLD = 40
+
+POOL_LOWER_THRESHOLD = 10
+POOL_UPPER_THRESHOLD = 40
+
+VAILD_CHECK_CYCLE = 600
+POOL_LEN_CHECK_CYCLE = 20
