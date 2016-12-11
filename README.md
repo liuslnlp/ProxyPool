@@ -1,5 +1,5 @@
 # ProxyPool
-[![Build Status](https://travis-ci.org/WiseDoge/ProxyPool.svg?branch=master)](https://travis-ci.org/WiseDoge/ProxyPool)
+[![Build Status](https://travis-ci.org/WiseDoge/ProxyPool.svg?branch=master)](https://travis-ci.org/WiseDoge/ProxyPool)   
 跨语言高性能IP代理池，Python实现。
 
 ## 运行环境
