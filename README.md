@@ -1,4 +1,5 @@
 # ProxyPool
+[![Build Status](https://travis-ci.org/WiseDoge/ProxyPool.svg?branch=master)](https://travis-ci.org/WiseDoge/ProxyPool)
 跨语言高性能IP代理池，Python实现。
 
 ## 运行环境
@@ -45,15 +46,15 @@ Windows 用户可以[点击此处](http://pan.baidu.com/s/1c1XsVEo)获取此程�
 
 访问`http://127.0.0.1:5000/`进入主页，如果显示'Welcome'，证明成功启动。
 
-![pic](docs\1.png)
+![pic](docs/1.png)
 
 访问`http://127.0.0.1:5000/get`可以获取一个可用代理。  
 
-![pic](docs\3.png)
+![pic](docs/3.png)
 
 访问`http://127.0.0.1:5000/count`可以获取代理池中可用代理的数量。  
 
-![pic](docs\2.png)
+![pic](docs/2.png)
 
 也可以在程序代码中用相应的语言获取，例如:
 
@@ -128,4 +129,4 @@ def get_proxy():
 
   > 设置
 
-![picture](docs\4.png)
+![picture](docs/4.png)
