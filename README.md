@@ -8,7 +8,9 @@
 
   (请务必保证Python的版本在3.5以上，否则异步检验无法使用。)
 
-* Redis 3
+* Redis 
+
+  Redis官网并没有提供Windows的安装版，Windows用户可以[点击此处](http://pan.baidu.com/s/1kVe6lc7)下载一个我自己编译的二进制版本(3.2版本2.7MB，VS 2015编译)。
 
 ## 安装
 
