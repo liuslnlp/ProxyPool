@@ -1,0 +1,3 @@
+[console_scripts]
+proxypool_run = run:cli
+

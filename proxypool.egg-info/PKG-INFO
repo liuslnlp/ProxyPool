@@ -1,0 +1,13 @@
+Metadata-Version: 1.1
+Name: proxypool
+Version: 1.0.0
+Summary: High-performance cross-platform proxy pool
+Home-page: https://github.com/WiseDoge/ProxyPool
+Author: wisedoge
+Author-email: wisedoge@outlook.com
+License: apache 2.0
+Description: Please go to https://github.com/WiseDoge/ProxyPool
+Platform: any
+Classifier: Environment :: Console
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: Implementation :: CPython

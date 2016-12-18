@@ -1,0 +1,6 @@
+aiohttp
+requests
+bs4
+flask
+redis
+lxml
