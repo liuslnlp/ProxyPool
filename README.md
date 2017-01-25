@@ -1,6 +1,8 @@
 # ProxyPool
 [![Build Status](https://travis-ci.org/WiseDoge/ProxyPool.svg?branch=master)](https://travis-ci.org/WiseDoge/ProxyPool)   
-跨语言高性能IP代理池，Python实现。
+跨语言高性能IP代理池，Python实现。    
+
+注意：请运行程序前先更新一下抓取代理的函数。
 
 ## 运行环境
 
