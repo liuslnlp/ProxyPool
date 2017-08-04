@@ -69,5 +69,6 @@ def get_proxy():
     proxy = BeautifulSoup(r.text, "lxml").get_text()
     return proxy
 ```
-
+## 文件结构
+![picture](docs/5.png)
 ![picture](docs/4.png)

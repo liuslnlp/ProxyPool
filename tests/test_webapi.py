@@ -16,6 +16,7 @@ class ApiTestCase(unittest.TestCase):
         self._conn.puts(['bbb'])
         r = self._app.get('/get')
         assert 'aaa' in str(r.data)
+
         r = self._app.get('/get')
         assert 'bbb' in str(r.data)
 

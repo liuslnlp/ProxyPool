@@ -10,4 +10,4 @@ script:
   - cd tests
   - python3 test_dbop.py
   - python3 test_spiders.py
-  - python3 test_webapi.py
+
