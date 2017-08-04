@@ -4,6 +4,7 @@ __version__ = 'V2.0.0'
 
 
 def main():
+    """运行"""
     from .schedule import ProxyCountCheckProcess, ExpireCheckProcess
     from .conf import VALID_CHECK_CYCLE, POOL_LEN_CHECK_CYCLE, \
         POOL_UPPER_THRESHOLD, POOL_LOWER_THRESHOLD
