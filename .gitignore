@@ -1,4 +1,5 @@
 *.vscode
 *.pyc
 *.db
+.idea
 venv

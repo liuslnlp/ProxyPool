@@ -1,20 +1,16 @@
+from .conf import HEADERS
 import requests
-import lxml
-import asyncio
-import time
-import aiohttp
 from bs4 import BeautifulSoup
-
-headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 \
-    (KHTML, like Gecko) Chrome/54.0.2840.71 Safari/537.36',
-    'Accept-Encoding': 'gzip, deflate, sdch',
-    'Accept-Language': 'zh-CN,zh;q=0.8'
-}
+import asyncio
+import aiohttp
 
 
 def get_page(url):
-    r = requests.get(url, headers=headers)
+    """将网页解析为 BeautifulSoup 对象并返回
+    :param url: web url
+    :return: BeautifulSoup
+    """
+    r = requests.get(url, headers=HEADERS)
     try:
         soup = BeautifulSoup(r.content.decode("utf-8"), 'lxml')
     except UnicodeDecodeError:
@@ -24,8 +20,10 @@ def get_page(url):
 
 class Downloader(object):
     """
-    一个异步下载器，可以对代理源异步抓取，但是容易被BAN。
+    一个异步下载器，可以用该类代替`get_page`函数。
+    由于下载速度过快，爬虫很容易被BAN。
     """
+
     def __init__(self, urls):
         self.urls = urls
         self._htmls = []

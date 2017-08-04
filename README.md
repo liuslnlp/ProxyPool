@@ -2,13 +2,13 @@
 [![Build Status](https://travis-ci.org/WiseDoge/ProxyPool.svg?branch=master)](https://travis-ci.org/WiseDoge/ProxyPool)   
 跨语言高性能IP代理池，Python实现。    
 
-注意：请运行程序前先更新一下抓取代理的函数。
-### 2017年7月会重构
+注意：请运行程序前先更新一下抓取代理的爬虫。
+
 ## 运行环境
 
-* Python 3.5
+* Python 3.6
 
-  (请务必保证Python的版本在3.5以上，否则异步检验无法使用。)
+  (请务必保证Python的版本在3.6以上，否则异步检验无法使用。)
 
 * Redis 
 
@@ -42,9 +42,6 @@
 
 `$ proxypool_run`
 
-### ③ 使用二进制包
-
-Windows 用户可以[点击此处](http://pan.baidu.com/s/1c1XsVEo)获取此程序的二进制包，直接运行。
 
 ## 使用API获取代理
 
@@ -72,65 +69,5 @@ def get_proxy():
     proxy = BeautifulSoup(r.text, "lxml").get_text()
     return proxy
 ```
-
-## 各模块功能
-
-* proxyGetter.py
-
-  > 爬虫模块
-
-  * class proxypool.proxyGetter.FreeProxyGetter
-
-    > 爬虫类，用于抓取代理源网站的代理，用户可复写和补充抓取规则。
-
-* schdule.py
-
-  > 调度器模块
-
-  * class proxypool.schdule.VaildityTester
-
-    > 异步检测类，可以对给定的代理的可用性进行异步检测。
-
-  * class proxypool.schdule.PoolAdder
-
-    > 代理添加器，用来触发爬虫模块，对代理池内的代理进行补充，代理池代理数达到阈值时停止工作。
-
-  * class proxypool.schdule.Schedule
-
-    > 代理池启动类，运行RUN函数时，会创建两个进程，负责对代理池内容的增加和更新。
-
-* db.py
-
-  > Redis数据库连接模块
-
-  * class proxypool.db.RedisClient
-
-    > 数据库操作类，维持与Redis的连接和对数据库的增删查该，
-
-* error.py
-
-  > 异常模块
-
-  * class proxypool.error.ResourceDepletionError
-
-    > 资源枯竭异常，如果从所有抓取网站都抓不到可用的代理资源，
-    >
-    > 则抛出此异常。
-
-  * class proxypool.error.PoolEmptyError
-
-    > 代理池空异常，如果代理池长时间为空，则抛出此异常。
-
-* api.py
-
-  > API模块，启动一个Web服务器，对外提供代理的获取功能。
-
-* utils.py
-
-  > 工具箱
-
-* setting.py
-
-  > 设置
 
 ![picture](docs/4.png)

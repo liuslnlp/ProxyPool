@@ -1,16 +1,14 @@
-from setuptools import setup
+from distutils.core import setup
 
 setup(
     name='proxypool',
-    version='1.0.0',
-    description='High-performance cross-platform proxy pool',
-    long_description='Please go to https://github.com/WiseDoge/ProxyPool',
+    version='V2.0.0',
+    packages=['proxypool', 'proxypool.schedule'],
+    url='https://github.com/WiseDoge/ProxyPool',
+    license='apache 2.0',
     author='wisedoge',
     author_email='wisedoge@outlook.com',
-    url='https://github.com/WiseDoge/ProxyPool',
-    packages=[
-        'proxypool'
-    ],
+    description='A Cross-platform proxy pool.',
     py_modules=['run'],
     include_package_data=True,
     platforms='any',
@@ -25,11 +23,9 @@ setup(
     entry_points={
         'console_scripts': ['proxypool_run=run:cli']
     },
-    license='apache 2.0',
-    zip_safe=False,
     classifiers=[
         'Environment :: Console',
-        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: Implementation :: CPython'
     ]
 )
