@@ -1,7 +1,7 @@
 from .conf import HOST, PORT, POOL_NAME
 import redis
 
-redis_pool = redis.ConnectionPool(host=HOST, port=PORT, max_connections=10)
+redis_pool = redis.ConnectionPool(host=HOST, port=PORT, max_connections=20)
 
 
 class RedisOperator(object):
@@ -48,3 +48,4 @@ class RedisOperator(object):
         :return: None
         """
         self._conn.flushall()
+
