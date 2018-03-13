@@ -28,7 +28,7 @@ class ExpireCheckProcess(Process):
             total = int(0.25 * pool.size)
             if total < 4:
                 continue
-            raw_proxies = pool.gets(total)
+            raw_proxies = [pool.pop() for _ in range(total)]
             self._tester.set_raw_proxies(raw_proxies)
             self._tester.test()
             proxies = self._tester.usable_proxies
