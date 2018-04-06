@@ -72,7 +72,7 @@ class Daili666Spider(metaclass=SpiderMeta):
     def gets(self, page_total=3):
         urls = [self.start_url.format(i)
                 for i in range(self._counter, self._counter + page_total)]
-        self._counter += page_total
+        self.increment(page_total)
         ans = []
         for url in urls:
             soup = get_page(url)
@@ -92,7 +92,7 @@ class KuaidailiSpider(metaclass=SpiderMeta):
     def gets(self, page_total=2):
         urls = [self.start_url.format(i)
                 for i in range(self._counter, self._counter + page_total)]
-        self._counter += page_total
+        self.increment(page_total)
         ans = []
         for url in urls:
             soup = get_page(url)
@@ -114,7 +114,7 @@ class XiciSpider(metaclass=SpiderMeta):
     def gets(self, page_total=2):
         urls = [self.start_url.format(i)
                 for i in range(self._counter, self._counter + page_total)]
-        self._counter += page_total
+        self.increment(page_total)
         ans = []
         for url in urls:
             soup = get_page(url)

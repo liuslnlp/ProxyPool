@@ -44,5 +44,4 @@ class PoolAdder(object):
                 break
             if flag >= 20:
                 raise ResourceDepletionError
-        for spider in spiders:
-            spider.flush()
+
